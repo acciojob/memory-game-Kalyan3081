@@ -41,9 +41,9 @@ button:hover {
 }
 
 .cells_container {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 10px;
-    justify-content: center;
     background-color: #0000FF;
     padding: 20px;
     border-radius: 10px;
@@ -72,4 +72,10 @@ button:hover {
 .cell.flipped {
     background-color: #fff;
     color: #000;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
