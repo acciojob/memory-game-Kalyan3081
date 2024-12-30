@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./MemoryGame.css";
+import "./memorygame.css";
 
 const MemoryGame = () => {
     const [level, setLevel] = useState("easy");
