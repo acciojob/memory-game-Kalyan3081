@@ -88,7 +88,7 @@ const MemoryGame = () => {
                     gridTemplateRows: `repeat(${levels[level] / 2}, 60px)`
                 }}>
                     <h4>game yo</h4>
-                    <p>Tries: {tries}</p>
+                    <h4>Tries: {tries}</h4>
                     {matched.length === numbers.length && <p>ALL SOLVED!</p>}
                     <button>New Game</button>
                     {numbers.map((num, index) => (
