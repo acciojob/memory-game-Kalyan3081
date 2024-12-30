@@ -40,6 +40,16 @@ const MemoryGame = () => {
         }
     };
 
+    const getRows = () => {
+        const size = levels[level];
+        const numRows = size / 2;
+        const rows = [];
+        for (let i = 0; i < numRows; i++) {
+            rows.push(numbers.slice(i * 4, i * 4 + 4)); // Adjust based on 4 columns per row
+        }
+        return rows;
+    };
+
     return (
         <>
             {!gameStarted ? (
@@ -83,21 +93,25 @@ const MemoryGame = () => {
                     <button onClick={startGame}>Start Game</button>
                 </div>
             ) : (
-                <div className="cells_container" style={{
-                    gridTemplateColumns: "repeat(4, 60px)",
-                    gridTemplateRows: `repeat(${levels[level] / 2}, 60px)`
-                }}>
+                <div className="cells_container">
                     <h4>game yo</h4>
                     <h4>Tries: {tries}</h4>
                     {matched.length === numbers.length && <p>ALL SOLVED!</p>}
-                    <button>New Game</button>
-                    {numbers.map((num, index) => (
-                        <div
-                            key={index}
-                            className={`cell ${selected.includes(index) || matched.includes(index) ? "flipped" : ""}`}
-                            onClick={() => handleClick(index)}
-                        >
-                            {selected.includes(index) || matched.includes(index) ? num : ""}
+                    <button onClick={() => setGameStarted(false)}>New Game</button>
+                    {getRows().map((row, rowIndex) => (
+                        <div key={rowIndex} className="row">
+                            {row.map((num, cellIndex) => {
+                                const index = rowIndex * 4 + cellIndex;
+                                return (
+                                    <div
+                                        key={index}
+                                        className={`cell ${selected.includes(index) || matched.includes(index) ? "flipped" : ""}`}
+                                        onClick={() => handleClick(index)}
+                                    >
+                                        {selected.includes(index) || matched.includes(index) ? num : ""}
+                                    </div>
+                                );
+                            })}
                         </div>
                     ))}
                 </div>
