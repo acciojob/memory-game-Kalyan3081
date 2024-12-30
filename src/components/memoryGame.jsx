@@ -44,7 +44,7 @@ const MemoryGame = () => {
         <>
             {!gameStarted ? (
                 <div className="main_container">
-                    <h3 className="mgTitle">Memory Game</h3>
+                    <h3 className="mgTitle">Welcome!</h3>
                     <div className="levels_container">
                         <label>
                             <input
@@ -52,6 +52,7 @@ const MemoryGame = () => {
                                 name="level"
                                 value="easy"
                                 checked={level === "easy"}
+                                id="easy"
                                 onChange={() => setLevel("easy")}
                             />
                             Easy
@@ -61,6 +62,7 @@ const MemoryGame = () => {
                                 type="radio"
                                 name="level"
                                 value="normal"
+                                id="normal"
                                 checked={level === "normal"}
                                 onChange={() => setLevel("normal")}
                             />
@@ -71,6 +73,7 @@ const MemoryGame = () => {
                                 type="radio"
                                 name="level"
                                 value="hard"
+                                id="hard"
                                 checked={level === "hard"}
                                 onChange={() => setLevel("hard")}
                             />
